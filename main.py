@@ -1,52 +1,13 @@
+import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
+
+from numpy import inf
 from networkx.drawing.nx_agraph import graphviz_layout
 
 
-def hierarchy_pos(G, root, levels=None, width=1., height=1.):
-    '''If there is a cycle that is reachable from root, then this will see infinite recursion.
-       G: the graph
-       root: the root node
-       levels: a dictionary
-               key: level number (starting from 0)
-               value: number of nodes in this level
-       width: horizontal space allocated for drawing
-       height: vertical space allocated for drawing'''
-    TOTAL = "total"
-    CURRENT = "current"
+G = nx.DiGraph()
 
-    def make_levels(levels, node=root, currentLevel=0, parent=None):
-        """Compute the number of nodes for each level
-        """
-        if not currentLevel in levels:
-            levels[currentLevel] = {TOTAL: 0, CURRENT: 0}
-        levels[currentLevel][TOTAL] += 1
-        neighbors = G.neighbors(node)
-        for neighbor in neighbors:
-            if not neighbor == parent:
-                levels = make_levels(levels, neighbor, currentLevel + 1, node)
-        return levels
-
-    def make_pos(pos, node=root, currentLevel=0, parent=None, vert_loc=0):
-        dx = 1 / levels[currentLevel][TOTAL]
-        left = dx / 2
-        pos[node] = ((left + dx * levels[currentLevel][CURRENT]) * width, vert_loc)
-        levels[currentLevel][CURRENT] += 1
-        neighbors = G.neighbors(node)
-        for neighbor in neighbors:
-            if not neighbor == parent:
-                pos = make_pos(pos, neighbor, currentLevel + 1, node, vert_loc - vert_gap)
-        return pos
-
-    if levels is None:
-        levels = make_levels({})
-    else:
-        levels = {l: {TOTAL: levels[l], CURRENT: 0} for l in levels}
-    vert_gap = height / (max([l for l in levels]) + 1)
-    return make_pos({})
-
-
-G = nx.Graph()
 G.add_nodes_from([
     ("1", {"data": 0}),
     ("2", {"data": 0}),
@@ -74,42 +35,42 @@ G.add_nodes_from([
     ("24", {"data": 0}),
     ("25", {"data": 0}),
     ("26", {"data": 0}),
-    ("27", {"data": 0}),
-    ("28", {"data": 0}),
-    ("29", {"data": 0}),
+    ("27", {"data": 3}),
+    ("28", {"data": 2}),
+    ("29", {"data": 1}),
     ("30", {"data": 0}),
-    ("31", {"data": 0}),
-    ("32", {"data": 0}),
-    ("33", {"data": 0}),
-    ("34", {"data": 0}),
-    ("35", {"data": 0}),
-    ("36", {"data": 0}),
-    ("37", {"data": 0}),
-    ("38", {"data": 0}),
-    ("39", {"data": 0}),
-    ("40", {"data": 0}),
-    ("41", {"data": 0}),
-    ("42", {"data": 0}),
-    ("43", {"data": 0}),
-    ("44", {"data": 0}),
-    ("45", {"data": 0}),
-    ("46", {"data": 0}),
-    ("47", {"data": 0}),
-    ("48", {"data": 0}),
+    ("31", {"data": 3}),
+    ("32", {"data": 4}),
+    ("33", {"data": 3}),
+    ("34", {"data": 3}),
+    ("35", {"data": 2}),
+    ("36", {"data": 5}),
+    ("37", {"data": 4}),
+    ("38", {"data": 5}),
+    ("39", {"data": 6}),
+    ("40", {"data": 5}),
+    ("41", {"data": 6}),
+    ("42", {"data": 5}),
+    ("43", {"data": 4}),
+    ("44", {"data": 2}),
+    ("45", {"data": 1}),
+    ("46", {"data": 5}),
+    ("47", {"data": 6}),
+    ("48", {"data": 1}),
     ("49", {"data": 0}),
-    ("50", {"data": 0}),
-    ("51", {"data": 0}),
-    ("52", {"data": 0}),
-    ("53", {"data": 0}),
-    ("54", {"data": 0}),
-    ("55", {"data": 0}),
-    ("56", {"data": 0}),
-    ("57", {"data": 0}),
-    ("58", {"data": 0}),
+    ("50", {"data": 2}),
+    ("51", {"data": 7}),
+    ("52", {"data": 6}),
+    ("53", {"data": 4}),
+    ("54", {"data": 3}),
+    ("55", {"data": 1}),
+    ("56", {"data": 3}),
+    ("57", {"data": 2}),
+    ("58", {"data": 1}),
     ("59", {"data": 0}),
-    ("60", {"data": 0}),
-    ("61", {"data": 0}),
-    ("62", {"data": 0}),
+    ("60", {"data": 2}),
+    ("61", {"data": 2}),
+    ("62", {"data": 1}),
 ])
 
 G.add_edges_from([
@@ -177,8 +138,73 @@ G.add_edges_from([
     ("26", "62"),
 ])
 
-# G.add_edges_from([(1,2), (1,3), (1,4), (2,5), (2,6), (2,7), (3,8), (3,9), (4,10),
-#                   (5,11), (5,12), (6,13)])
-pos = graphviz_layout(G, prog='dot')
-nx.draw(G, pos, with_labels=True, arrows=True, node_size=100, font_size=8, font_color="white")
-plt.show()
+
+
+
+def minimax(position, depth, maximizingPlayer):
+    if depth == 0:
+        # or game over in position
+        return G.nodes[position]['data']
+
+    if maximizingPlayer:
+        maxEval = -inf
+        for node in G.neighbors(position):
+            eval = minimax(node, depth - 1, False)
+            maxEval = max(maxEval, eval)
+        G.nodes[position]['data'] = maxEval
+        print("maxEval = " + str(maxEval))
+        return maxEval
+    else:
+        minEval = +inf
+        for node in G.neighbors(position):
+            eval = minimax(node, depth - 1, True)
+            minEval = min(minEval, eval)
+        G.nodes[position]['data'] = minEval
+        print("minEval = " + str(minEval))
+        return minEval
+
+
+# minimax("1", 4, True)
+
+def alpha_beta_pruning(position, depth, alpha, beta, maximizingPlayer):
+    if depth == 0:
+        # or game over in position
+        return G.nodes[position]['data']
+
+    if maximizingPlayer:
+        maxEval = -inf
+        for node in G.neighbors(position):
+            eval = alpha_beta_pruning(node, depth - 1, alpha, beta, False)
+            maxEval = max(maxEval, eval)
+            alpha = max(alpha, eval)
+            if beta <= alpha:
+                break
+        G.nodes[position]['data'] = maxEval
+        print("maxEval = " + str(maxEval))
+        return maxEval
+    else:
+        minEval = +inf
+        for node in G.neighbors(position):
+            eval = alpha_beta_pruning(node, depth - 1, alpha, beta, True)
+            minEval = min(minEval, eval)
+            beta = min(beta, eval)
+            if beta <= alpha:
+                break
+        G.nodes[position]['data'] = minEval
+        print("minEval = " + str(minEval))
+        return minEval
+
+
+
+def draw_tree():
+    pos = graphviz_layout(G, prog='dot')
+    node_labels = {n: (d["data"]) for n, d in G.nodes(data=True)}
+
+    nx.draw(G, pos, arrows=True, node_size=100, node_color="brown")
+    nx.draw_networkx_labels(G, pos, labels=node_labels,font_size=10, font_color="white")
+
+    plt.show()
+
+
+alpha_beta_pruning("1", 4, -inf, +inf, True)
+draw_tree()
