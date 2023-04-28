@@ -125,8 +125,10 @@ class Ui_MainWindow(object):
         self.figure.clear()
         draw_tree()
         self.canvas.draw()
+        color_map_update()
 
     def protocol_update(self):
         self.text_edit.clear()
         self.text_edit.append(str("".join(text_output)))
         text_output.clear()
+

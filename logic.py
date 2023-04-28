@@ -54,7 +54,11 @@ def alpha_beta_pruning(position, depth, alpha, beta, is_reverse_order, maximizin
                 max_eval = max(max_eval, eval)
                 alpha = max(alpha, eval)
                 if beta <= alpha:
-                    G.edges[position, str(int(node))]['color'] = 'red'
+                    for item in G.neighbors(position):
+                        if int(item) > int(node):
+                            text_output.append(
+                                "Вершина " + item + " отсечена,  т.к.  альфа (" + str(alpha) + ") >= бета (" + str(beta) + ")\n")
+                            G.edges[position, item]['color'] = 'red'
                     break
         else:
             for node in reversed(list(G.neighbors(position))):
@@ -63,7 +67,11 @@ def alpha_beta_pruning(position, depth, alpha, beta, is_reverse_order, maximizin
                 max_eval = max(max_eval, eval)
                 alpha = max(alpha, eval)
                 if beta <= alpha:
-                    G.edges[position, str(int(node))]['color'] = 'red'
+                    for item in reversed(list(G.neighbors(position))):
+                        if int(item) < int(node):
+                            text_output.append(
+                                "Вершина " + item + " отсечена,  т.к.  альфа (" + str(alpha) + ") >= бета (" + str(beta) + ")\n")
+                            G.edges[position, item]['color'] = 'red'
                     break
         G.nodes[position]['data'] = max_eval
         text_output.append("Вершине " + str(position) + " присвоено значение: " + str(max_eval) + " (max)\n")
@@ -77,7 +85,11 @@ def alpha_beta_pruning(position, depth, alpha, beta, is_reverse_order, maximizin
                 min_eval = min(min_eval, eval)
                 beta = min(beta, eval)
                 if beta <= alpha:
-                    G.edges[position, str(int(node))]['color'] = 'red'
+                    for item in G.neighbors(position):
+                        if int(item) > int(node):
+                            text_output.append(
+                                "Вершина " + item + " отсечена,  т.к.  альфа (" + str(alpha) + ") >= бета (" + str(beta) + ")\n")
+                            G.edges[position, item]['color'] = 'red'
                     break
         else:
             for node in reversed(list(G.neighbors(position))):
@@ -86,7 +98,11 @@ def alpha_beta_pruning(position, depth, alpha, beta, is_reverse_order, maximizin
                 min_eval = min(min_eval, eval)
                 beta = min(beta, eval)
                 if beta <= alpha:
-                    G.edges[position, str(int(node))]['color'] = 'red'
+                    for item in reversed(list(G.neighbors(position))):
+                        if int(item) < int(node):
+                            text_output.append(
+                                "Вершина " + item + " отсечена,  т.к.  альфа (" + str(alpha) + ") >= бета (" + str(beta) + ")\n")
+                            G.edges[position, item]['color'] = 'red'
                     break
         G.nodes[position]['data'] = min_eval
         text_output.append("Вершине " + str(position) + " присвоено значение: " + str(min_eval) + " (min)\n")

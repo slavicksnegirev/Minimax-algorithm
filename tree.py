@@ -134,18 +134,9 @@ G.add_edges_from([
 ])
 
 
-# def set_edge_color_map():
-#     # edge_color_map = []
-#     for u, v in G.edges:
-#         color_map[u][v] = 'grey'
-#         # if G.nodes[v]['data'] == " ":
-#         #     edge_color_map.append('red')
-#         # else:
-#         #     edge_color_map.append('grey')
-#
-#     # return edge_color_map
-
-
+def color_map_update():
+    for u, v in G.edges:
+        G.edges[u, v]['color'] = 'grey'
 
 
 def draw_tree():
@@ -153,15 +144,6 @@ def draw_tree():
     node_keys = {n: n for n, d in G.nodes(data=True)}
     node_values = {n: (d["data"]) for n, d in G.nodes(data=True)}
     edge_color_map = {(u, v): (d["color"]) for u, v, d in G.edges(data=True)}
-
-    # node_color_map = []
-    # for node in G:
-    #     if G.nodes[node]['data'] == " ":
-    #         node_color_map.append('brown')
-    #     else:
-    #         node_color_map.append('green')
-
-
 
     nx.draw(G, pos, arrows=True, node_size=90, node_color="green", edge_color=edge_color_map.values())
     nx.draw_networkx_labels(G, pos, labels=node_values,font_size=10, font_color="white")
