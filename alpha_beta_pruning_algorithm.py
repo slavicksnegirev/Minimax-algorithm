@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'minimax_algorithm.ui'
+# Form implementation generated from reading ui file 'alpha_beta_pruning_algorithm.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -12,20 +12,20 @@ from logic import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_minimax_algorithm(object):
-    def setupUi(self, minimax_algorithm):
-        minimax_algorithm.setObjectName("minimax_algorithm")
-        minimax_algorithm.resize(405, 136)
-        self.verticalLayout = QtWidgets.QVBoxLayout(minimax_algorithm)
+class Ui_alpha_beta_pruning_algorithm(object):
+    def setupUi(self, alpha_beta_pruning_algorithm):
+        alpha_beta_pruning_algorithm.setObjectName("alpha_beta_pruning_algorithm")
+        alpha_beta_pruning_algorithm.resize(360, 136)
+        self.verticalLayout = QtWidgets.QVBoxLayout(alpha_beta_pruning_algorithm)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label = QtWidgets.QLabel(minimax_algorithm)
+        self.label = QtWidgets.QLabel(alpha_beta_pruning_algorithm)
         self.label.setObjectName("label")
         self.horizontalLayout_2.addWidget(self.label)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
-        self.comboBox = QtWidgets.QComboBox(minimax_algorithm)
+        self.comboBox = QtWidgets.QComboBox(alpha_beta_pruning_algorithm)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
@@ -33,12 +33,12 @@ class Ui_minimax_algorithm(object):
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label_2 = QtWidgets.QLabel(minimax_algorithm)
+        self.label_2 = QtWidgets.QLabel(alpha_beta_pruning_algorithm)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.label_2)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
-        self.comboBox_2 = QtWidgets.QComboBox(minimax_algorithm)
+        self.comboBox_2 = QtWidgets.QComboBox(alpha_beta_pruning_algorithm)
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
@@ -46,48 +46,49 @@ class Ui_minimax_algorithm(object):
         self.verticalLayout.addLayout(self.horizontalLayout)
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem2)
-        self.buttonBox = QtWidgets.QDialogButtonBox(minimax_algorithm)
+        self.buttonBox = QtWidgets.QDialogButtonBox(alpha_beta_pruning_algorithm)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
-        self.retranslateUi(minimax_algorithm)
-        self.buttonBox.accepted.connect(minimax_algorithm.accept) # type: ignore
-        self.buttonBox.rejected.connect(minimax_algorithm.reject) # type: ignore
-        QtCore.QMetaObject.connectSlotsByName(minimax_algorithm)
+        self.retranslateUi(alpha_beta_pruning_algorithm)
+        self.buttonBox.accepted.connect(alpha_beta_pruning_algorithm.accept) # type: ignore
+        self.buttonBox.rejected.connect(alpha_beta_pruning_algorithm.reject) # type: ignore
+        QtCore.QMetaObject.connectSlotsByName(alpha_beta_pruning_algorithm)
 
-    def retranslateUi(self, minimax_algorithm):
+    def retranslateUi(self, alpha_beta_pruning_algorithm):
         _translate = QtCore.QCoreApplication.translate
-        minimax_algorithm.setWindowTitle(_translate("minimax_algorithm", "Dialog"))
-        self.label.setText(_translate("minimax_algorithm", "Порядок анализа листьев дерева:"))
-        self.comboBox.setItemText(0, _translate("minimax_algorithm", "слева-направо"))
-        self.comboBox.setItemText(1, _translate("minimax_algorithm", "справа-налево"))
-        self.label_2.setText(_translate("minimax_algorithm", "Первый ход принадлежит игроку:"))
-        self.comboBox_2.setItemText(0, _translate("minimax_algorithm", "max"))
-        self.comboBox_2.setItemText(1, _translate("minimax_algorithm", "min"))
+        alpha_beta_pruning_algorithm.setWindowTitle(_translate("alpha_beta_pruning_algorithm", "Dialog"))
+        self.label.setText(_translate("alpha_beta_pruning_algorithm", "Порядок анализа листьев дерева:"))
+        self.comboBox.setItemText(0, _translate("alpha_beta_pruning_algorithm", "слева-направо"))
+        self.comboBox.setItemText(1, _translate("alpha_beta_pruning_algorithm", "справа-налево"))
+        self.label_2.setText(_translate("alpha_beta_pruning_algorithm", "Первый ход принадлежит игроку:"))
+        self.comboBox_2.setItemText(0, _translate("alpha_beta_pruning_algorithm", "max"))
+        self.comboBox_2.setItemText(1, _translate("alpha_beta_pruning_algorithm", "min"))
+
 
     def show_data(self):
-        return (self.comboBox.currentText(), self.comboBox_2.currentText())
+        return self.comboBox.currentText(), self.comboBox_2.currentText()
 
 
-def minimax_algorithm_dialog():
-    global minimax_algorithm
-    minimax_algorithm = QtWidgets.QDialog()
-    ui = Ui_minimax_algorithm()
-    ui.setupUi(minimax_algorithm)
-    minimax_algorithm.show()
+def alpha_beta_pruning_algorithm_dialog():
+    global alpha_beta_pruning_algorithm
+    alpha_beta_pruning_algorithm = QtWidgets.QDialog()
+    ui = Ui_alpha_beta_pruning_algorithm()
+    ui.setupUi(alpha_beta_pruning_algorithm)
+    alpha_beta_pruning_algorithm.show()
 
-    if minimax_algorithm.exec():
+    if alpha_beta_pruning_algorithm.exec():
         text_output.append("Порядок анализа листьев дерева: " + str(ui.show_data()[0]) + "\n")
         text_output.append("Первый ход принадлжет игроку: " + str(ui.show_data()[1]) + "\n")
         text_output.append("\nВывод протокола:\n")
 
         if ui.show_data()[0] == "слева-направо" and  ui.show_data()[1] == "max":
-            minimax("1", 4, False, True)
+            alpha_beta_pruning("1", 4, -inf, +inf, False, True)
         elif ui.show_data()[0] == "слева-направо" and  ui.show_data()[1] == "min":
-            minimax("1", 4, False, False)
+            alpha_beta_pruning("1", 4, -inf, +inf, False, False)
         elif ui.show_data()[0] == "справа-налево" and  ui.show_data()[1] == "max":
-            minimax("1", 4, True, True)
+            alpha_beta_pruning("1", 4, -inf, +inf, True, True)
         elif ui.show_data()[0] == "справа-налево" and  ui.show_data()[1] == "min":
-            minimax("1", 4, True, False)
+            alpha_beta_pruning("1", 4, -inf, +inf, True, False)

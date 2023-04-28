@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 
 from logic import *
 from minimax_algorithm import *
+from alpha_beta_pruning_algorithm import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -59,9 +60,9 @@ class Ui_MainWindow(object):
         self.minimax_algorithm_button.setObjectName("pushButton_3")
         self.verticalLayout.addWidget(self.minimax_algorithm_button)
 
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.verticalLayout.addWidget(self.pushButton_4)
+        self.alpha_beta_pruning_algorithm_button = QtWidgets.QPushButton(self.centralwidget)
+        self.alpha_beta_pruning_algorithm_button.setObjectName("pushButton_4")
+        self.verticalLayout.addWidget(self.alpha_beta_pruning_algorithm_button)
 
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
@@ -106,16 +107,19 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Выбор игрового дерева"))
         self.pushButton_2.setText(_translate("MainWindow", "Задать оценки листьев"))
         self.minimax_algorithm_button.setText(_translate("MainWindow", "Минимаксный алгоритм"))
-        self.pushButton_4.setText(_translate("MainWindow", "Алгоритм с отсечениями"))
+        self.alpha_beta_pruning_algorithm_button.setText(_translate("MainWindow", "Алгоритм с отсечениями"))
         self.text_edit.setText(_translate("MainWindow", "Программа запущена.\n"
                                                         "По умолчанию строится игровое дерево №1: " + str(G) +
                                                         ".\nВнизу каждой вершины отображается ее порядковый номер,  а в самой вершине ее значение."))
 
         self.minimax_algorithm_button.clicked.connect(minimax_algorithm_dialog)
+        self.alpha_beta_pruning_algorithm_button.clicked.connect(alpha_beta_pruning_algorithm_dialog)
 
         self.minimax_algorithm_button.clicked.connect(self.plot_canvas)
+        self.alpha_beta_pruning_algorithm_button.clicked.connect(self.plot_canvas)
 
         self.minimax_algorithm_button.clicked.connect(self.protocol_update)
+        self.alpha_beta_pruning_algorithm_button.clicked.connect(self.protocol_update)
 
     def plot_canvas(self):
         self.figure.clear()
@@ -126,5 +130,3 @@ class Ui_MainWindow(object):
         self.text_edit.clear()
         self.text_edit.append(str("".join(text_output)))
         text_output.clear()
-
-    # alpha_beta_pruning("1", 4, -inf, +inf, True)
