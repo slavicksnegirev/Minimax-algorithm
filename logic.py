@@ -12,27 +12,31 @@ def minimax(position, depth, is_reverse_order, maximizing_player):
         max_eval = -inf
         if not is_reverse_order:
             for node in G.neighbors(position):
+                text_output.append("Рассматриваемая вершина: " + str(node) + "\n")
                 eval = minimax(node, depth - 1, is_reverse_order, False)
                 max_eval = max(max_eval, eval)
         else:
             for node in reversed(list(G.neighbors(position))):
+                text_output.append("Рассматриваемая вершина: " + str(node) + "\n")
                 eval = minimax(node, depth - 1, is_reverse_order, False)
                 max_eval = max(max_eval, eval)
         G.nodes[position]['data'] = max_eval
-        text_output.append("Вершине " + str(position) + " присвоено значение: " + str(max_eval) + "\n")
+        text_output.append("Вершине " + str(position) + " присвоено значение: " + str(max_eval) + " (max)\n")
         return max_eval
     else:
         min_eval = +inf
         if not is_reverse_order:
             for node in G.neighbors(position):
+                text_output.append("Рассматриваемая вершина: " + str(node) + "\n")
                 eval = minimax(node, depth - 1, is_reverse_order, True)
                 min_eval = min(min_eval, eval)
         else:
             for node in reversed(list(G.neighbors(position))):
+                text_output.append("Рассматриваемая вершина: " + str(node) + "\n")
                 eval = minimax(node, depth - 1, is_reverse_order, True)
                 min_eval = min(min_eval, eval)
         G.nodes[position]['data'] = min_eval
-        text_output.append("Вершине " + str(position) + " присвоено значение: " + str(min_eval) + "\n")
+        text_output.append("Вершине " + str(position) + " присвоено значение: " + str(min_eval) + " (min)\n")
         return min_eval
 
 

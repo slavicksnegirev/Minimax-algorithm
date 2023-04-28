@@ -107,7 +107,9 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Задать оценки листьев"))
         self.minimax_algorithm_button.setText(_translate("MainWindow", "Минимаксный алгоритм"))
         self.pushButton_4.setText(_translate("MainWindow", "Алгоритм с отсечениями"))
-        self.text_edit.setText(_translate("MainWindow", "Программа запущена.\nПо умолчанию строится игровое дерево №1:\n" + str(G)))
+        self.text_edit.setText(_translate("MainWindow", "Программа запущена.\n"
+                                                        "По умолчанию строится игровое дерево №1: " + str(G) +
+                                                        ".\nВнизу каждой вершины отображается ее порядковый номер,  а в самой вершине ее значение."))
 
         self.minimax_algorithm_button.clicked.connect(minimax_algorithm_dialog)
 

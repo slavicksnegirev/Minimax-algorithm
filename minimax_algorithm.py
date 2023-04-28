@@ -77,9 +77,12 @@ def minimax_algorithm_dialog():
     ui = Ui_minimax_algorithm()
     ui.setupUi(minimax_algorithm)
     minimax_algorithm.show()
-    text_output.append("Вывод протокола:\n")
 
     if minimax_algorithm.exec():
+        text_output.append("Порядок анализа листьев дерева: " + str(ui.show_data()[0]) + "\n")
+        text_output.append("Первый ход принадлжет игроку: " + str(ui.show_data()[1]) + "\n")
+        text_output.append("\nВывод протокола:\n")
+
         if ui.show_data()[0] == "слева-направо" and  ui.show_data()[1] == "max":
             minimax("1", 4, False, True)
         elif ui.show_data()[0] == "слева-направо" and  ui.show_data()[1] == "min":
@@ -87,4 +90,5 @@ def minimax_algorithm_dialog():
         elif ui.show_data()[0] == "справа-налево" and  ui.show_data()[1] == "max":
             minimax("1", 4, True, True)
         elif ui.show_data()[0] == "справа-налево" and  ui.show_data()[1] == "min":
+            print("yes")
             minimax("1", 4, True, False)

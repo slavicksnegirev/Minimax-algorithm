@@ -136,7 +136,8 @@ G.add_edges_from([
 
 def draw_tree():
     pos = graphviz_layout(G, prog='dot')
-    node_labels = {n: (d["data"]) for n, d in G.nodes(data=True)}
+    node_keys = {n: n for n, d in G.nodes(data=True)}
+    node_values = {n: (d["data"]) for n, d in G.nodes(data=True)}
 
     node_color_map = []
     for node in G:
@@ -150,10 +151,21 @@ def draw_tree():
         if G.nodes[v]['data'] == "-":
             edge_color_map.append('red')
         else:
-            edge_color_map.append('black')
+            edge_color_map.append('grey')
 
-    nx.draw(G, pos, arrows=True, node_size=100, node_color=node_color_map, edge_color=edge_color_map)
-    nx.draw_networkx_labels(G, pos, labels=node_labels,font_size=10, font_color="white")
+    nx.draw(G, pos, arrows=True, node_size=90, node_color=node_color_map, edge_color=edge_color_map)
+    nx.draw_networkx_labels(G, pos, labels=node_values,font_size=10, font_color="white")
+
+    print(pos)
+    for i in pos:
+        my_list = list(pos[i])
+        my_list[1] -= 10
+        pos[i] = tuple(my_list)
+    print()
+    print(pos)
+    # print(G.nodes.keys())
+
+    nx.draw_networkx_labels(G, pos, labels=node_keys, font_size=6, font_color="blue")
 
     # plt.show()
 
