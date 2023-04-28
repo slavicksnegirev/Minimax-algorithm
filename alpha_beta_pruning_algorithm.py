@@ -67,7 +67,6 @@ class Ui_alpha_beta_pruning_algorithm(object):
         self.comboBox_2.setItemText(0, _translate("alpha_beta_pruning_algorithm", "max"))
         self.comboBox_2.setItemText(1, _translate("alpha_beta_pruning_algorithm", "min"))
 
-
     def show_data(self):
         return self.comboBox.currentText(), self.comboBox_2.currentText()
 
@@ -84,11 +83,11 @@ def alpha_beta_pruning_algorithm_dialog():
         text_output.append("Первый ход принадлжет игроку: " + str(ui.show_data()[1]) + "\n")
         text_output.append("\nВывод протокола:\n")
 
-        if ui.show_data()[0] == "слева-направо" and  ui.show_data()[1] == "max":
-            alpha_beta_pruning("1", 4, -inf, +inf, False, True)
-        elif ui.show_data()[0] == "слева-направо" and  ui.show_data()[1] == "min":
-            alpha_beta_pruning("1", 4, -inf, +inf, False, False)
-        elif ui.show_data()[0] == "справа-налево" and  ui.show_data()[1] == "max":
-            alpha_beta_pruning("1", 4, -inf, +inf, True, True)
-        elif ui.show_data()[0] == "справа-налево" and  ui.show_data()[1] == "min":
-            alpha_beta_pruning("1", 4, -inf, +inf, True, False)
+        if ui.show_data()[0] == "слева-направо" and ui.show_data()[1] == "max":
+            alpha_beta_pruning(trees_dict[current_tree_var], "1", 4, -inf, +inf, False, True)
+        elif ui.show_data()[0] == "слева-направо" and ui.show_data()[1] == "min":
+            alpha_beta_pruning(trees_dict[current_tree_var], "1", 4, -inf, +inf, False, False)
+        elif ui.show_data()[0] == "справа-налево" and ui.show_data()[1] == "max":
+            alpha_beta_pruning(trees_dict[current_tree_var], "1", 4, -inf, +inf, True, True)
+        elif ui.show_data()[0] == "справа-налево" and ui.show_data()[1] == "min":
+            alpha_beta_pruning(trees_dict[current_tree_var], "1", 4, -inf, +inf, True, False)

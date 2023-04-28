@@ -10,6 +10,7 @@
 import matplotlib.pyplot as plt
 
 from logic import *
+from tree_variation_selection import *
 from minimax_algorithm import *
 from alpha_beta_pruning_algorithm import *
 
@@ -42,9 +43,9 @@ class Ui_MainWindow(object):
         self.line.setObjectName("line")
         self.verticalLayout.addWidget(self.line)
 
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout.addWidget(self.pushButton)
+        self.tree_variation_selection_button = QtWidgets.QPushButton(self.centralwidget)
+        self.tree_variation_selection_button.setObjectName("pushButton")
+        self.verticalLayout.addWidget(self.tree_variation_selection_button)
 
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName("pushButton_2")
@@ -104,28 +105,32 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ЛР №3 ПЗвИС"))
         self.label.setText(_translate("MainWindow", "НАСТРОЙКИ"))
-        self.pushButton.setText(_translate("MainWindow", "Выбор игрового дерева"))
+        self.tree_variation_selection_button.setText(_translate("MainWindow", "Выбор игрового дерева"))
         self.pushButton_2.setText(_translate("MainWindow", "Задать оценки листьев"))
         self.minimax_algorithm_button.setText(_translate("MainWindow", "Минимаксный алгоритм"))
         self.alpha_beta_pruning_algorithm_button.setText(_translate("MainWindow", "Алгоритм с отсечениями"))
         self.text_edit.setText(_translate("MainWindow", "Программа запущена.\n"
-                                                        "По умолчанию строится игровое дерево №1: " + str(G) +
+                                                        "По умолчанию строится игровое дерево №1: " + str(tree_var1) +
                                                         ".\nВнизу каждой вершины отображается ее порядковый номер,  а в самой вершине ее значение."))
 
+
+        self.tree_variation_selection_button.clicked.connect(tree_variation_selection_dialog)
         self.minimax_algorithm_button.clicked.connect(minimax_algorithm_dialog)
         self.alpha_beta_pruning_algorithm_button.clicked.connect(alpha_beta_pruning_algorithm_dialog)
 
+        self.tree_variation_selection_button.clicked.connect(self.plot_canvas)
         self.minimax_algorithm_button.clicked.connect(self.plot_canvas)
         self.alpha_beta_pruning_algorithm_button.clicked.connect(self.plot_canvas)
 
+        self.tree_variation_selection_button.clicked.connect(self.protocol_update)
         self.minimax_algorithm_button.clicked.connect(self.protocol_update)
         self.alpha_beta_pruning_algorithm_button.clicked.connect(self.protocol_update)
 
     def plot_canvas(self):
         self.figure.clear()
-        draw_tree()
+        draw_tree(trees_dict[current_tree_var])
         self.canvas.draw()
-        color_map_update()
+        color_map_update(trees_dict[current_tree_var])
 
     def protocol_update(self):
         self.text_edit.clear()

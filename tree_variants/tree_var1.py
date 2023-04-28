@@ -1,10 +1,8 @@
 import networkx as nx
 
-from networkx.drawing.nx_agraph import graphviz_layout
+tree_var1 = nx.DiGraph()
 
-G = nx.DiGraph()
-
-G.add_nodes_from([
+tree_var1.add_nodes_from([
     ("1", {"data": " "}),
     ("2", {"data": " "}),
     ("3", {"data": " "}),
@@ -69,7 +67,7 @@ G.add_nodes_from([
     ("62", {"data": 1}),
 ])
 
-G.add_edges_from([
+tree_var1.add_edges_from([
     ("1", "2", {"color": 'grey'}),
     ("1", "3", {"color": 'grey'}),
     ("1", "4", {"color": 'grey'}),
@@ -132,27 +130,3 @@ G.add_edges_from([
     ("26", "61", {"color": 'grey'}),
     ("26", "62", {"color": 'grey'}),
 ])
-
-
-def color_map_update():
-    for u, v in G.edges:
-        G.edges[u, v]['color'] = 'grey'
-
-
-def draw_tree():
-    pos = graphviz_layout(G, prog='dot')
-    node_keys = {n: n for n, d in G.nodes(data=True)}
-    node_values = {n: (d["data"]) for n, d in G.nodes(data=True)}
-    edge_color_map = {(u, v): (d["color"]) for u, v, d in G.edges(data=True)}
-
-    nx.draw(G, pos, arrows=True, node_size=90, node_color="green", edge_color=edge_color_map.values())
-    nx.draw_networkx_labels(G, pos, labels=node_values,font_size=10, font_color="white")
-
-    for i in pos:
-        my_list = list(pos[i])
-        my_list[1] -= 10
-        pos[i] = tuple(my_list)
-
-    nx.draw_networkx_labels(G, pos, labels=node_keys, font_size=6, font_color="blue")
-
-    # plt.show()

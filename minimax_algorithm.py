@@ -83,11 +83,11 @@ def minimax_algorithm_dialog():
         text_output.append("Первый ход принадлжет игроку: " + str(ui.show_data()[1]) + "\n")
         text_output.append("\nВывод протокола:\n")
 
-        if ui.show_data()[0] == "слева-направо" and  ui.show_data()[1] == "max":
-            minimax("1", 4, False, True)
-        elif ui.show_data()[0] == "слева-направо" and  ui.show_data()[1] == "min":
-            minimax("1", 4, False, False)
-        elif ui.show_data()[0] == "справа-налево" and  ui.show_data()[1] == "max":
-            minimax("1", 4, True, True)
-        elif ui.show_data()[0] == "справа-налево" and  ui.show_data()[1] == "min":
-            minimax("1", 4, True, False)
+        if ui.show_data()[0] == "слева-направо" and ui.show_data()[1] == "max":
+            minimax(trees_dict[current_tree_var], "1", 4, False, True)
+        elif ui.show_data()[0] == "слева-направо" and ui.show_data()[1] == "min":
+            minimax(trees_dict[current_tree_var], "1", 4, False, False)
+        elif ui.show_data()[0] == "справа-налево" and ui.show_data()[1] == "max":
+            minimax(trees_dict[current_tree_var], "1", 4, True, True)
+        elif ui.show_data()[0] == "справа-налево" and ui.show_data()[1] == "min":
+            minimax(trees_dict[current_tree_var], "1", 4, True, False)
