@@ -3,27 +3,37 @@ from numpy import inf
 
 text_output = []
 
-def minimax(position, depth, maximizingPlayer):
+def minimax(position, depth, is_reverse_order, maximizing_player):
     if depth == 0:
         # or game over in position
         return G.nodes[position]['data']
 
-    if maximizingPlayer:
-        maxEval = -inf
-        for node in G.neighbors(position):
-            eval = minimax(node, depth - 1, False)
-            maxEval = max(maxEval, eval)
-        G.nodes[position]['data'] = maxEval
-        # print("maxEval = " + str(maxEval))
-        return maxEval
+    if maximizing_player:
+        max_eval = -inf
+        if not is_reverse_order:
+            for node in G.neighbors(position):
+                eval = minimax(node, depth - 1, is_reverse_order, False)
+                max_eval = max(max_eval, eval)
+        else:
+            for node in reversed(list(G.neighbors(position))):
+                eval = minimax(node, depth - 1, is_reverse_order, False)
+                max_eval = max(max_eval, eval)
+        G.nodes[position]['data'] = max_eval
+        text_output.append("Вершине " + str(position) + " присвоено значение: " + str(max_eval) + "\n")
+        return max_eval
     else:
-        minEval = +inf
-        for node in G.neighbors(position):
-            eval = minimax(node, depth - 1, True)
-            minEval = min(minEval, eval)
-        G.nodes[position]['data'] = minEval
-        # print("minEval = " + str(minEval))
-        return minEval
+        min_eval = +inf
+        if not is_reverse_order:
+            for node in G.neighbors(position):
+                eval = minimax(node, depth - 1, is_reverse_order, True)
+                min_eval = min(min_eval, eval)
+        else:
+            for node in reversed(list(G.neighbors(position))):
+                eval = minimax(node, depth - 1, is_reverse_order, True)
+                min_eval = min(min_eval, eval)
+        G.nodes[position]['data'] = min_eval
+        text_output.append("Вершине " + str(position) + " присвоено значение: " + str(min_eval) + "\n")
+        return min_eval
 
 
 def alpha_beta_pruning(position, depth, alpha, beta, maximizingPlayer):

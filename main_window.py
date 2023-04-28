@@ -10,6 +10,7 @@
 import matplotlib.pyplot as plt
 
 from logic import *
+from minimax_algorithm import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -21,53 +22,60 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setObjectName("horizontalLayout")
+
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setStyleSheet("font: 18pt \".AppleSystemUIFont\";")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
+
         self.line = QtWidgets.QFrame(self.centralwidget)
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.verticalLayout.addWidget(self.line)
+
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
+
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName("pushButton_2")
         self.verticalLayout.addWidget(self.pushButton_2)
+
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.verticalLayout.addWidget(self.line_2)
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.verticalLayout.addWidget(self.pushButton_3)
+
+        self.minimax_algorithm_button = QtWidgets.QPushButton(self.centralwidget)
+        self.minimax_algorithm_button.setObjectName("pushButton_3")
+        self.verticalLayout.addWidget(self.minimax_algorithm_button)
+
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_4.setObjectName("pushButton_4")
         self.verticalLayout.addWidget(self.pushButton_4)
+
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
+
         self.horizontalLayout.addLayout(self.verticalLayout)
+
         self.line_4 = QtWidgets.QFrame(self.centralwidget)
         self.line_4.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
         self.horizontalLayout.addWidget(self.line_4)
+
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-
-        # self.frame = QtWidgets.QFrame(self.centralwidget)
-        # self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        # self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        # self.frame.setObjectName("frame")
-        # self.verticalLayout_2.addWidget(self.frame)
 
         self.figure = plt.figure()
         self.canvas = FigureCanvas(self.figure)
@@ -78,22 +86,18 @@ class Ui_MainWindow(object):
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
         self.verticalLayout_2.addWidget(self.line_3)
-        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
-        self.textEdit.setObjectName("text_output")
-        self.verticalLayout_2.addWidget(self.textEdit)
+
+        self.text_edit = QtWidgets.QTextEdit(self.centralwidget)
+        self.text_edit.setObjectName("text_output")
+        self.verticalLayout_2.addWidget(self.text_edit)
+
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 24))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.plot_canvas()
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -101,8 +105,15 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "НАСТРОЙКИ"))
         self.pushButton.setText(_translate("MainWindow", "Выбор игрового дерева"))
         self.pushButton_2.setText(_translate("MainWindow", "Задать оценки листьев"))
-        self.pushButton_3.setText(_translate("MainWindow", "Минимаксный алгоритм"))
+        self.minimax_algorithm_button.setText(_translate("MainWindow", "Минимаксный алгоритм"))
         self.pushButton_4.setText(_translate("MainWindow", "Алгоритм с отсечениями"))
+        self.text_edit.setText(_translate("MainWindow", "Программа запущена.\nПо умолчанию строится игровое дерево №1:\n" + str(G)))
+
+        self.minimax_algorithm_button.clicked.connect(minimax_algorithm_dialog)
+
+        self.minimax_algorithm_button.clicked.connect(self.plot_canvas)
+
+        self.minimax_algorithm_button.clicked.connect(self.protocol_update)
 
     def plot_canvas(self):
         self.figure.clear()
@@ -113,15 +124,5 @@ class Ui_MainWindow(object):
         self.text_edit.clear()
         self.text_edit.append(str("".join(text_output)))
         text_output.clear()
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
 
     # alpha_beta_pruning("1", 4, -inf, +inf, True)
