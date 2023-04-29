@@ -1,9 +1,53 @@
 from tree_variants.tree_var1 import *
 from tree_variants.tree_var2 import *
+from tree_variants.tree_var3 import *
+from tree_variants.tree_var4 import *
+from tree_variants.tree_var5 import *
+from tree_variants.tree_var6 import *
+from tree_variants.tree_var7 import *
+from tree_variants.tree_var8 import *
+from tree_variants.tree_var9 import *
+from tree_variants.tree_var10 import *
+from tree_variants.tree_var11 import *
+from tree_variants.tree_var12 import *
 from networkx.drawing.nx_agraph import graphviz_layout
 
-current_tree_var = '1'
-trees_dict = {'1': tree_var1, '2': tree_var2}
+
+class Current_tree_variation:
+    def __init__(self):
+        self.current_tree_var = '1'
+
+    def __str__(self):
+        return current_tree_var
+
+    def get(self):
+        return self.current_tree_var
+
+    def change(self, new_value):
+        assert isinstance(new_value, str)
+        self.current_tree_var = new_value
+
+
+trees_dict = {
+    '1': tree_var1,
+    '2': tree_var2,
+    '3': tree_var3,
+    '4': tree_var4,
+    '5': tree_var5,
+    '6': tree_var6,
+    '7': tree_var7,
+    '8': tree_var8,
+    '9': tree_var9,
+    '10': tree_var10,
+    '11': tree_var11,
+    '12': tree_var12,
+}
+current_tree_var = Current_tree_variation()
+
+
+def data_update(G):
+    G.add_nodes_from(data_list)
+
 
 def color_map_update(G):
     for u, v in G.edges:
@@ -17,7 +61,7 @@ def draw_tree(G):
     edge_color_map = {(u, v): (d["color"]) for u, v, d in G.edges(data=True)}
 
     nx.draw(G, pos, arrows=True, node_size=90, node_color="green", edge_color=edge_color_map.values())
-    nx.draw_networkx_labels(G, pos, labels=node_values,font_size=10, font_color="white")
+    nx.draw_networkx_labels(G, pos, labels=node_values,font_size=8, font_color="white")
 
     for i in pos:
         my_list = list(pos[i])
@@ -25,5 +69,4 @@ def draw_tree(G):
         pos[i] = tuple(my_list)
 
     nx.draw_networkx_labels(G, pos, labels=node_keys, font_size=6, font_color="blue")
-
     # plt.show()

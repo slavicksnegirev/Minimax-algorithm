@@ -2,16 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e79ffe18-c5c0-4ac7-ac52-9348d1577fad" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/*.ui files/tree_variation_selection.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tree_variation_selection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/trees.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var10.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var11.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var12.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var8.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tree_variants/tree_var9.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alpha_beta_pruning_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/alpha_beta_pruning_algorithm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logic.py" beforeDir="false" afterPath="$PROJECT_DIR$/logic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_window.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minimax_algorithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/minimax_algorithm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree_variants/tree_var1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree_variants/tree_var1.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree_variants/tree_var1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree_variants/tree_var2.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree_variants/tree_var2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree_variation_selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree_variation_selection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trees.py" beforeDir="false" afterPath="$PROJECT_DIR$/trees.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,11 +30,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_HOME_DIR$/plugins/python/helpers/typeshed/stdlib/builtins.pyi" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2OPsCHC99eHXpxxKpvLwrnzO9rD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -78,29 +92,20 @@
       <workItem from="1681473466957" duration="822000" />
       <workItem from="1682053088509" duration="1493000" />
       <workItem from="1682589250027" duration="5083000" />
-      <workItem from="1682610630659" duration="32367000" />
+      <workItem from="1682610630659" duration="32662000" />
+      <workItem from="1682744447316" duration="6849000" />
+      <workItem from="1682752496532" duration="2761000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tree_variation_selection.py</url>
-          <line>62</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Minimax_Algorithm$logic.coverage" NAME="logic Coverage Results" MODIFIED="1682687945355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Minimax_Algorithm$trees.coverage" NAME="trees Coverage Results" MODIFIED="1682716376358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Minimax_Algorithm$minimax_algorithm.coverage" NAME="minimax_algorithm Coverage Results" MODIFIED="1682686500965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Minimax_Algorithm$main.coverage" NAME="main Coverage Results" MODIFIED="1682721849970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Minimax_Algorithm$main.coverage" NAME="main Coverage Results" MODIFIED="1682755465912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Minimax_Algorithm$main_window.coverage" NAME="main_window Coverage Results" MODIFIED="1682693882251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

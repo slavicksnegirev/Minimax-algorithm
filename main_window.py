@@ -67,7 +67,6 @@ class Ui_MainWindow(object):
 
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
-
         self.horizontalLayout.addLayout(self.verticalLayout)
 
         self.line_4 = QtWidgets.QFrame(self.centralwidget)
@@ -92,7 +91,6 @@ class Ui_MainWindow(object):
         self.text_edit = QtWidgets.QTextEdit(self.centralwidget)
         self.text_edit.setObjectName("text_output")
         self.verticalLayout_2.addWidget(self.text_edit)
-
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -109,10 +107,9 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Задать оценки листьев"))
         self.minimax_algorithm_button.setText(_translate("MainWindow", "Минимаксный алгоритм"))
         self.alpha_beta_pruning_algorithm_button.setText(_translate("MainWindow", "Алгоритм с отсечениями"))
-        self.text_edit.setText(_translate("MainWindow", "Программа запущена.\n"
-                                                        "По умолчанию строится игровое дерево №1: " + str(tree_var1) +
-                                                        ".\nВнизу каждой вершины отображается ее порядковый номер,  а в самой вершине ее значение."))
-
+        self.text_edit.setText(_translate("MainWindow", f"Программа запущена.\n"
+                                                        f"По умолчанию строится игровое дерево №1: {tree_var1}"
+                                                        f".\nВнизу каждой вершины отображается ее порядковый номер,  а в самой вершине ее оценка."))
 
         self.tree_variation_selection_button.clicked.connect(tree_variation_selection_dialog)
         self.minimax_algorithm_button.clicked.connect(minimax_algorithm_dialog)
@@ -128,12 +125,12 @@ class Ui_MainWindow(object):
 
     def plot_canvas(self):
         self.figure.clear()
-        draw_tree(trees_dict[current_tree_var])
+        draw_tree(trees_dict[current_tree_var.get()])
         self.canvas.draw()
-        color_map_update(trees_dict[current_tree_var])
+        data_update(trees_dict[current_tree_var.get()])
+        color_map_update(trees_dict[current_tree_var.get()])
 
     def protocol_update(self):
         self.text_edit.clear()
         self.text_edit.append(str("".join(text_output)))
         text_output.clear()
-

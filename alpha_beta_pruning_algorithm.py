@@ -16,36 +16,47 @@ class Ui_alpha_beta_pruning_algorithm(object):
     def setupUi(self, alpha_beta_pruning_algorithm):
         alpha_beta_pruning_algorithm.setObjectName("alpha_beta_pruning_algorithm")
         alpha_beta_pruning_algorithm.resize(360, 136)
+
         self.verticalLayout = QtWidgets.QVBoxLayout(alpha_beta_pruning_algorithm)
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+
         self.label = QtWidgets.QLabel(alpha_beta_pruning_algorithm)
         self.label.setObjectName("label")
         self.horizontalLayout_2.addWidget(self.label)
+
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
+
         self.comboBox = QtWidgets.QComboBox(alpha_beta_pruning_algorithm)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.horizontalLayout_2.addWidget(self.comboBox)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
+
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+
         self.label_2 = QtWidgets.QLabel(alpha_beta_pruning_algorithm)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.label_2)
+
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
+
         self.comboBox_2 = QtWidgets.QComboBox(alpha_beta_pruning_algorithm)
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.horizontalLayout.addWidget(self.comboBox_2)
         self.verticalLayout.addLayout(self.horizontalLayout)
+
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem2)
+
         self.buttonBox = QtWidgets.QDialogButtonBox(alpha_beta_pruning_algorithm)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
@@ -79,15 +90,15 @@ def alpha_beta_pruning_algorithm_dialog():
     alpha_beta_pruning_algorithm.show()
 
     if alpha_beta_pruning_algorithm.exec():
-        text_output.append("Порядок анализа листьев дерева: " + str(ui.show_data()[0]) + "\n")
-        text_output.append("Первый ход принадлжет игроку: " + str(ui.show_data()[1]) + "\n")
+        text_output.append(f"Порядок анализа листьев дерева: {ui.show_data()[0]}\n")
+        text_output.append(f"Первый ход принадлжет игроку: {ui.show_data()[1]}\n")
         text_output.append("\nВывод протокола:\n")
 
         if ui.show_data()[0] == "слева-направо" and ui.show_data()[1] == "max":
-            alpha_beta_pruning(trees_dict[current_tree_var], "1", 4, -inf, +inf, False, True)
+            alpha_beta_pruning(trees_dict[current_tree_var.get()], "1", 4, -inf, +inf, False, True)
         elif ui.show_data()[0] == "слева-направо" and ui.show_data()[1] == "min":
-            alpha_beta_pruning(trees_dict[current_tree_var], "1", 4, -inf, +inf, False, False)
+            alpha_beta_pruning(trees_dict[current_tree_var.get()], "1", 4, -inf, +inf, False, False)
         elif ui.show_data()[0] == "справа-налево" and ui.show_data()[1] == "max":
-            alpha_beta_pruning(trees_dict[current_tree_var], "1", 4, -inf, +inf, True, True)
+            alpha_beta_pruning(trees_dict[current_tree_var.get()], "1", 4, -inf, +inf, True, True)
         elif ui.show_data()[0] == "справа-налево" and ui.show_data()[1] == "min":
-            alpha_beta_pruning(trees_dict[current_tree_var], "1", 4, -inf, +inf, True, False)
+            alpha_beta_pruning(trees_dict[current_tree_var.get()], "1", 4, -inf, +inf, True, False)

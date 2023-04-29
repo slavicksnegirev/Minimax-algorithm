@@ -15,22 +15,29 @@ class Ui_tree_variation_selection(object):
     def setupUi(self, tree_variation_selection):
         tree_variation_selection.setObjectName("tree_variation_selection")
         tree_variation_selection.resize(376, 100)
+
         self.verticalLayout = QtWidgets.QVBoxLayout(tree_variation_selection)
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+
         self.label = QtWidgets.QLabel(tree_variation_selection)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
+
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
+
         self.comboBox = QtWidgets.QComboBox(tree_variation_selection)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItems(list(trees_dict.keys()))
         self.horizontalLayout.addWidget(self.comboBox)
         self.verticalLayout.addLayout(self.horizontalLayout)
+
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem1)
+
         self.buttonBox = QtWidgets.QDialogButtonBox(tree_variation_selection)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
@@ -59,5 +66,5 @@ def tree_variation_selection_dialog():
     tree_variation_selection.show()
 
     if tree_variation_selection.exec():
-        current_tree_var = ui.show_data()[0]
-        print(current_tree_var)
+        current_tree_var.change(ui.show_data())
+        text_output.append(f"Выбрано игровое дерево №{ui.show_data()}")
