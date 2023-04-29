@@ -11,25 +11,25 @@
 from logic import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_tree_variation_selection(object):
-    def setupUi(self, tree_variation_selection):
-        tree_variation_selection.setObjectName("tree_variation_selection")
-        tree_variation_selection.resize(376, 100)
+class Ui_tree_variation_selection_window(object):
+    def setupUi(self, tree_variation_selection_window):
+        tree_variation_selection_window.setObjectName("tree_variation_selection_window")
+        tree_variation_selection_window.resize(376, 100)
 
-        self.verticalLayout = QtWidgets.QVBoxLayout(tree_variation_selection)
+        self.verticalLayout = QtWidgets.QVBoxLayout(tree_variation_selection_window)
         self.verticalLayout.setObjectName("verticalLayout")
 
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
 
-        self.label = QtWidgets.QLabel(tree_variation_selection)
+        self.label = QtWidgets.QLabel(tree_variation_selection_window)
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
 
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
 
-        self.comboBox = QtWidgets.QComboBox(tree_variation_selection)
+        self.comboBox = QtWidgets.QComboBox(tree_variation_selection_window)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItems(list(trees_dict.keys()))
         self.horizontalLayout.addWidget(self.comboBox)
@@ -38,20 +38,20 @@ class Ui_tree_variation_selection(object):
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem1)
 
-        self.buttonBox = QtWidgets.QDialogButtonBox(tree_variation_selection)
+        self.buttonBox = QtWidgets.QDialogButtonBox(tree_variation_selection_window)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
-        self.retranslateUi(tree_variation_selection)
-        self.buttonBox.accepted.connect(tree_variation_selection.accept) # type: ignore
-        self.buttonBox.rejected.connect(tree_variation_selection.reject) # type: ignore
-        QtCore.QMetaObject.connectSlotsByName(tree_variation_selection)
+        self.retranslateUi(tree_variation_selection_window)
+        self.buttonBox.accepted.connect(tree_variation_selection_window.accept) # type: ignore
+        self.buttonBox.rejected.connect(tree_variation_selection_window.reject) # type: ignore
+        QtCore.QMetaObject.connectSlotsByName(tree_variation_selection_window)
 
-    def retranslateUi(self, tree_variation_selection):
+    def retranslateUi(self, tree_variation_selection_window):
         _translate = QtCore.QCoreApplication.translate
-        tree_variation_selection.setWindowTitle(_translate("tree_variation_selection", "Выбор варианта"))
+        tree_variation_selection_window.setWindowTitle(_translate("tree_variation_selection", "Выбор варианта"))
         self.label.setText(_translate("tree_variation_selection", "Выберите вариант игрового дерева:"))
 
     def show_data(self):
@@ -59,12 +59,12 @@ class Ui_tree_variation_selection(object):
 
 
 def tree_variation_selection_dialog():
-    global tree_variation_selection
-    tree_variation_selection = QtWidgets.QDialog()
-    ui = Ui_tree_variation_selection()
-    ui.setupUi(tree_variation_selection)
-    tree_variation_selection.show()
+    # global tree_variation_selection
+    tree_variation_selection_window = QtWidgets.QDialog()
+    ui = Ui_tree_variation_selection_window()
+    ui.setupUi(tree_variation_selection_window)
+    tree_variation_selection_window.show()
 
-    if tree_variation_selection.exec():
+    if tree_variation_selection_window.exec():
         current_tree_var.change(ui.show_data())
         text_output.append(f"Выбрано игровое дерево №{ui.show_data()}")

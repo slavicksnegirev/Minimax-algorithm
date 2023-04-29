@@ -1,3 +1,4 @@
+from copy import deepcopy
 from tree_variants.tree_var1 import *
 from tree_variants.tree_var2 import *
 from tree_variants.tree_var3 import *
@@ -28,6 +29,19 @@ class Current_tree_variation:
         self.current_tree_var = new_value
 
 
+class Data_list:
+    def __init__(self):
+        self.data_list = []
+        for item in trees_dict.values():
+            self.data_list.append(list(item.nodes(data=True)))
+
+    def __str__(self):
+        return data_list
+
+    def get(self):
+        return self.data_list
+
+
 trees_dict = {
     '1': tree_var1,
     '2': tree_var2,
@@ -42,11 +56,15 @@ trees_dict = {
     '11': tree_var11,
     '12': tree_var12,
 }
+data_list = list()
+for item in trees_dict.values():
+    data_list.append(list(item.nodes(data=True)))
+data_list = deepcopy(data_list)
 current_tree_var = Current_tree_variation()
 
 
-def data_update(G):
-    G.add_nodes_from(data_list)
+def data_update(G, index):
+    G.add_nodes_from(data_list[index])
 
 
 def color_map_update(G):

@@ -12,25 +12,25 @@ from logic import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_minimax_algorithm(object):
-    def setupUi(self, minimax_algorithm):
-        minimax_algorithm.setObjectName("minimax_algorithm")
-        minimax_algorithm.resize(405, 136)
+class Ui_minimax_algorithm_window(object):
+    def setupUi(self, minimax_algorithm_window):
+        minimax_algorithm_window.setObjectName("minimax_algorithm")
+        minimax_algorithm_window.resize(405, 136)
 
-        self.verticalLayout = QtWidgets.QVBoxLayout(minimax_algorithm)
+        self.verticalLayout = QtWidgets.QVBoxLayout(minimax_algorithm_window)
         self.verticalLayout.setObjectName("verticalLayout")
 
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
 
-        self.label = QtWidgets.QLabel(minimax_algorithm)
+        self.label = QtWidgets.QLabel(minimax_algorithm_window)
         self.label.setObjectName("label")
         self.horizontalLayout_2.addWidget(self.label)
 
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
 
-        self.comboBox = QtWidgets.QComboBox(minimax_algorithm)
+        self.comboBox = QtWidgets.QComboBox(minimax_algorithm_window)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
@@ -40,14 +40,14 @@ class Ui_minimax_algorithm(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
 
-        self.label_2 = QtWidgets.QLabel(minimax_algorithm)
+        self.label_2 = QtWidgets.QLabel(minimax_algorithm_window)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.label_2)
 
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
 
-        self.comboBox_2 = QtWidgets.QComboBox(minimax_algorithm)
+        self.comboBox_2 = QtWidgets.QComboBox(minimax_algorithm_window)
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
@@ -57,20 +57,20 @@ class Ui_minimax_algorithm(object):
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem2)
 
-        self.buttonBox = QtWidgets.QDialogButtonBox(minimax_algorithm)
+        self.buttonBox = QtWidgets.QDialogButtonBox(minimax_algorithm_window)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
-        self.retranslateUi(minimax_algorithm)
-        self.buttonBox.accepted.connect(minimax_algorithm.accept) # type: ignore
-        self.buttonBox.rejected.connect(minimax_algorithm.reject) # type: ignore
-        QtCore.QMetaObject.connectSlotsByName(minimax_algorithm)
+        self.retranslateUi(minimax_algorithm_window)
+        self.buttonBox.accepted.connect(minimax_algorithm_window.accept) # type: ignore
+        self.buttonBox.rejected.connect(minimax_algorithm_window.reject) # type: ignore
+        QtCore.QMetaObject.connectSlotsByName(minimax_algorithm_window)
 
-    def retranslateUi(self, minimax_algorithm):
+    def retranslateUi(self, minimax_algorithm_window):
         _translate = QtCore.QCoreApplication.translate
-        minimax_algorithm.setWindowTitle(_translate("minimax_algorithm", "Dialog"))
+        minimax_algorithm_window.setWindowTitle(_translate("minimax_algorithm", "Dialog"))
         self.label.setText(_translate("minimax_algorithm", "Порядок анализа листьев дерева:"))
         self.comboBox.setItemText(0, _translate("minimax_algorithm", "слева-направо"))
         self.comboBox.setItemText(1, _translate("minimax_algorithm", "справа-налево"))
@@ -83,13 +83,13 @@ class Ui_minimax_algorithm(object):
 
 
 def minimax_algorithm_dialog():
-    global minimax_algorithm
-    minimax_algorithm = QtWidgets.QDialog()
-    ui = Ui_minimax_algorithm()
-    ui.setupUi(minimax_algorithm)
-    minimax_algorithm.show()
+    # global minimax_algorithm_window
+    minimax_algorithm_window = QtWidgets.QDialog()
+    ui = Ui_minimax_algorithm_window()
+    ui.setupUi(minimax_algorithm_window)
+    minimax_algorithm_window.show()
 
-    if minimax_algorithm.exec():
+    if minimax_algorithm_window.exec():
         text_output.append(f"Порядок анализа листьев дерева: {ui.show_data()[0]}\n")
         text_output.append(f"Первый ход принадлжет игроку: {ui.show_data()[1]}\n")
         text_output.append("\nВывод протокола:\n")

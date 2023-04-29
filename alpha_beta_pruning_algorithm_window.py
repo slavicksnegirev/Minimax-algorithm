@@ -12,25 +12,25 @@ from logic import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_alpha_beta_pruning_algorithm(object):
-    def setupUi(self, alpha_beta_pruning_algorithm):
-        alpha_beta_pruning_algorithm.setObjectName("alpha_beta_pruning_algorithm")
-        alpha_beta_pruning_algorithm.resize(360, 136)
+class Ui_alpha_beta_pruning_algorithm_window(object):
+    def setupUi(self, alpha_beta_pruning_algorithm_window):
+        alpha_beta_pruning_algorithm_window.setObjectName("alpha_beta_pruning_algorithm")
+        alpha_beta_pruning_algorithm_window.resize(360, 136)
 
-        self.verticalLayout = QtWidgets.QVBoxLayout(alpha_beta_pruning_algorithm)
+        self.verticalLayout = QtWidgets.QVBoxLayout(alpha_beta_pruning_algorithm_window)
         self.verticalLayout.setObjectName("verticalLayout")
 
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
 
-        self.label = QtWidgets.QLabel(alpha_beta_pruning_algorithm)
+        self.label = QtWidgets.QLabel(alpha_beta_pruning_algorithm_window)
         self.label.setObjectName("label")
         self.horizontalLayout_2.addWidget(self.label)
 
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
 
-        self.comboBox = QtWidgets.QComboBox(alpha_beta_pruning_algorithm)
+        self.comboBox = QtWidgets.QComboBox(alpha_beta_pruning_algorithm_window)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
@@ -40,14 +40,14 @@ class Ui_alpha_beta_pruning_algorithm(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
 
-        self.label_2 = QtWidgets.QLabel(alpha_beta_pruning_algorithm)
+        self.label_2 = QtWidgets.QLabel(alpha_beta_pruning_algorithm_window)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.label_2)
 
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
 
-        self.comboBox_2 = QtWidgets.QComboBox(alpha_beta_pruning_algorithm)
+        self.comboBox_2 = QtWidgets.QComboBox(alpha_beta_pruning_algorithm_window)
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
@@ -57,20 +57,20 @@ class Ui_alpha_beta_pruning_algorithm(object):
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem2)
 
-        self.buttonBox = QtWidgets.QDialogButtonBox(alpha_beta_pruning_algorithm)
+        self.buttonBox = QtWidgets.QDialogButtonBox(alpha_beta_pruning_algorithm_window)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
-        self.retranslateUi(alpha_beta_pruning_algorithm)
-        self.buttonBox.accepted.connect(alpha_beta_pruning_algorithm.accept) # type: ignore
-        self.buttonBox.rejected.connect(alpha_beta_pruning_algorithm.reject) # type: ignore
-        QtCore.QMetaObject.connectSlotsByName(alpha_beta_pruning_algorithm)
+        self.retranslateUi(alpha_beta_pruning_algorithm_window)
+        self.buttonBox.accepted.connect(alpha_beta_pruning_algorithm_window.accept) # type: ignore
+        self.buttonBox.rejected.connect(alpha_beta_pruning_algorithm_window.reject) # type: ignore
+        QtCore.QMetaObject.connectSlotsByName(alpha_beta_pruning_algorithm_window)
 
-    def retranslateUi(self, alpha_beta_pruning_algorithm):
+    def retranslateUi(self, alpha_beta_pruning_algorithm_window):
         _translate = QtCore.QCoreApplication.translate
-        alpha_beta_pruning_algorithm.setWindowTitle(_translate("alpha_beta_pruning_algorithm", "Dialog"))
+        alpha_beta_pruning_algorithm_window.setWindowTitle(_translate("alpha_beta_pruning_algorithm", "Dialog"))
         self.label.setText(_translate("alpha_beta_pruning_algorithm", "Порядок анализа листьев дерева:"))
         self.comboBox.setItemText(0, _translate("alpha_beta_pruning_algorithm", "слева-направо"))
         self.comboBox.setItemText(1, _translate("alpha_beta_pruning_algorithm", "справа-налево"))
@@ -83,13 +83,13 @@ class Ui_alpha_beta_pruning_algorithm(object):
 
 
 def alpha_beta_pruning_algorithm_dialog():
-    global alpha_beta_pruning_algorithm
-    alpha_beta_pruning_algorithm = QtWidgets.QDialog()
-    ui = Ui_alpha_beta_pruning_algorithm()
-    ui.setupUi(alpha_beta_pruning_algorithm)
-    alpha_beta_pruning_algorithm.show()
+    # global alpha_beta_pruning_algorithm
+    alpha_beta_pruning_algorithm_window = QtWidgets.QDialog()
+    ui = Ui_alpha_beta_pruning_algorithm_window()
+    ui.setupUi(alpha_beta_pruning_algorithm_window)
+    alpha_beta_pruning_algorithm_window.show()
 
-    if alpha_beta_pruning_algorithm.exec():
+    if alpha_beta_pruning_algorithm_window.exec():
         text_output.append(f"Порядок анализа листьев дерева: {ui.show_data()[0]}\n")
         text_output.append(f"Первый ход принадлжет игроку: {ui.show_data()[1]}\n")
         text_output.append("\nВывод протокола:\n")

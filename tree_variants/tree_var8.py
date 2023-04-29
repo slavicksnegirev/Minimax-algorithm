@@ -1,7 +1,8 @@
 import networkx as nx
 
 tree_var8 = nx.DiGraph()
-data_list = [
+
+tree_var8.add_nodes_from([
     ("1", {"data": " "}),
     ("2", {"data": " "}),
     ("3", {"data": " "}),
@@ -64,9 +65,7 @@ data_list = [
     ("60", {"data": 9}),
     ("61", {"data": 8}),
     ("62", {"data": 9}),
-]
-
-tree_var8.add_nodes_from(data_list)
+])
 
 tree_var8.add_edges_from([
 #-------------- LEVEL 1 --------------#

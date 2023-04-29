@@ -10,9 +10,10 @@
 import matplotlib.pyplot as plt
 
 from logic import *
-from tree_variation_selection import *
-from minimax_algorithm import *
-from alpha_beta_pruning_algorithm import *
+from tree_variation_selection_window import *
+from rating_changing_window import *
+from minimax_algorithm_window import *
+from alpha_beta_pruning_algorithm_window import *
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -47,9 +48,9 @@ class Ui_MainWindow(object):
         self.tree_variation_selection_button.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.tree_variation_selection_button)
 
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.verticalLayout.addWidget(self.pushButton_2)
+        self.rating_changing_button = QtWidgets.QPushButton(self.centralwidget)
+        self.rating_changing_button.setObjectName("pushButton_2")
+        self.verticalLayout.addWidget(self.rating_changing_button)
 
         self.line_2 = QtWidgets.QFrame(self.centralwidget)
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
@@ -104,22 +105,25 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "ЛР №3 ПЗвИС"))
         self.label.setText(_translate("MainWindow", "НАСТРОЙКИ"))
         self.tree_variation_selection_button.setText(_translate("MainWindow", "Выбор игрового дерева"))
-        self.pushButton_2.setText(_translate("MainWindow", "Задать оценки листьев"))
+        self.rating_changing_button.setText(_translate("MainWindow", "Изменить оценки листьев"))
         self.minimax_algorithm_button.setText(_translate("MainWindow", "Минимаксный алгоритм"))
         self.alpha_beta_pruning_algorithm_button.setText(_translate("MainWindow", "Алгоритм с отсечениями"))
         self.text_edit.setText(_translate("MainWindow", f"Программа запущена.\n"
                                                         f"По умолчанию строится игровое дерево №1: {tree_var1}"
-                                                        f".\nВнизу каждой вершины отображается ее порядковый номер,  а в самой вершине ее оценка."))
+                                                        f".\nВнизу листьев дерева отображается их порядковый номер,  а в самих листьях их оценка."))
 
         self.tree_variation_selection_button.clicked.connect(tree_variation_selection_dialog)
+        self.rating_changing_button.clicked.connect(rating_changing_dialog)
         self.minimax_algorithm_button.clicked.connect(minimax_algorithm_dialog)
         self.alpha_beta_pruning_algorithm_button.clicked.connect(alpha_beta_pruning_algorithm_dialog)
 
         self.tree_variation_selection_button.clicked.connect(self.plot_canvas)
+        self.rating_changing_button.clicked.connect(self.plot_canvas)
         self.minimax_algorithm_button.clicked.connect(self.plot_canvas)
         self.alpha_beta_pruning_algorithm_button.clicked.connect(self.plot_canvas)
 
         self.tree_variation_selection_button.clicked.connect(self.protocol_update)
+        self.rating_changing_button.clicked.connect(self.protocol_update)
         self.minimax_algorithm_button.clicked.connect(self.protocol_update)
         self.alpha_beta_pruning_algorithm_button.clicked.connect(self.protocol_update)
 
@@ -127,7 +131,7 @@ class Ui_MainWindow(object):
         self.figure.clear()
         draw_tree(trees_dict[current_tree_var.get()])
         self.canvas.draw()
-        data_update(trees_dict[current_tree_var.get()])
+        data_update(trees_dict[current_tree_var.get()], int(current_tree_var.get()) - 1)
         color_map_update(trees_dict[current_tree_var.get()])
 
     def protocol_update(self):
