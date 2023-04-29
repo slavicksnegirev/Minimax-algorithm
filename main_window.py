@@ -110,7 +110,7 @@ class Ui_MainWindow(object):
         self.alpha_beta_pruning_algorithm_button.setText(_translate("MainWindow", "Алгоритм с отсечениями"))
         self.text_edit.setText(_translate("MainWindow", f"Программа запущена.\n"
                                                         f"По умолчанию строится игровое дерево №1: {tree_var1}"
-                                                        f".\nВнизу листьев дерева отображается их порядковый номер,  а в самих листьях их оценка."))
+                                                        f".\nПод каждым листом дерева синим цветом указан порядковый номер.  В центре листа белым цветом отображается оценка."))
 
         self.tree_variation_selection_button.clicked.connect(tree_variation_selection_dialog)
         self.rating_changing_button.clicked.connect(rating_changing_dialog)
