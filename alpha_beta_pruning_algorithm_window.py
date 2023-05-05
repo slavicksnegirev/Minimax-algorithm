@@ -70,7 +70,7 @@ class Ui_alpha_beta_pruning_algorithm_window(object):
 
     def retranslateUi(self, alpha_beta_pruning_algorithm_window):
         _translate = QtCore.QCoreApplication.translate
-        alpha_beta_pruning_algorithm_window.setWindowTitle(_translate("alpha_beta_pruning_algorithm", "Dialog"))
+        alpha_beta_pruning_algorithm_window.setWindowTitle(_translate("alpha_beta_pruning_algorithm", "Алгоритм с отсечениями"))
         self.label.setText(_translate("alpha_beta_pruning_algorithm", "Порядок анализа листьев дерева:"))
         self.comboBox.setItemText(0, _translate("alpha_beta_pruning_algorithm", "слева-направо"))
         self.comboBox.setItemText(1, _translate("alpha_beta_pruning_algorithm", "справа-налево"))

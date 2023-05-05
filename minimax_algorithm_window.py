@@ -70,7 +70,7 @@ class Ui_minimax_algorithm_window(object):
 
     def retranslateUi(self, minimax_algorithm_window):
         _translate = QtCore.QCoreApplication.translate
-        minimax_algorithm_window.setWindowTitle(_translate("minimax_algorithm", "Dialog"))
+        minimax_algorithm_window.setWindowTitle(_translate("minimax_algorithm", "Минимаксный алгоритм"))
         self.label.setText(_translate("minimax_algorithm", "Порядок анализа листьев дерева:"))
         self.comboBox.setItemText(0, _translate("minimax_algorithm", "слева-направо"))
         self.comboBox.setItemText(1, _translate("minimax_algorithm", "справа-налево"))
